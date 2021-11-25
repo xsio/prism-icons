@@ -2,13 +2,13 @@ name: icon-automation
 on:
   push:
     branches:
-    - master
+    - main
     # file paths to consider in the event. Optional; defaults to all.
     paths:
       - package.json
   pull_request:
     branches:
-    - master
+    - main
     # file paths to consider in the event. Optional; defaults to all.
     paths:
       - package.json
@@ -33,10 +33,10 @@ jobs:
         FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
     - run: yarn generate
     - run: yarn build:bundle
-    #- run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-    #- run: yarn publish --verbose
-     # env:
-      #  NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+    - run: echo "${{ secrets.REGISTRY }}/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+    - run: yarn publish --verbose
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     - run: yarn build
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.2.5
