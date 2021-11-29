@@ -24,6 +24,7 @@ jobs:
       with:
         node-version: '10.x'
         registry-url: ${{ secrets.REGISTRY }}
+        scope: '@prism'
     - run: yarn install
     - name: Figma Action
       uses: primer/figma-action@v1.0.0-alpha.2

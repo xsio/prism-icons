@@ -1,5 +1,5 @@
 {
-  "name": "ui-icons",
+  "name": "@prism/ui-icons",
   "version": "0.20.25",
   "description": "Icon automation workflow with Figma for Prism",
   "main": "./icons.js",
