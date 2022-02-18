@@ -91,9 +91,13 @@ const generateIconCode = async ({name}) => {
 // append export code to icons.js
 const appendToIconsIndex = ({ComponentName, name}) => {
   // const exportString = `export const ${ComponentName} = React.lazy(() => import( /* webpackChunkName: "prism.icons.${ComponentName}" */ './icons/${upperCamelCase(name)}'));\r\n`;
-  const exportString = `export const ${ComponentName} = (props) => {
+  const cacheName = `${ComponentName}_cache`
+  const exportString = `
+  let ${cacheName} = null;
+  export const ${ComponentName} = (props) => {
     const { fallback = null, ...otherProps } = props
-    let C = React.lazy(() => import( /* webpackChunkName: "prism.icons.${ComponentName}" */ './icons/${upperCamelCase(name)}'));
+    let C = ${cacheName} || React.lazy(() => import( /* webpackChunkName: "prism.icons.${ComponentName}" */ './icons/${upperCamelCase(name)}'));
+    ${cacheName} = C;
     return (<Suspense fallback={fallback}>
       <C {...otherProps}/>
     </Suspense>)
