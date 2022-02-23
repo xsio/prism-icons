@@ -63,12 +63,11 @@ const attrsToString = (attrs, style) => {
 // generate icon code separately
 const generateIconCode = async ({name}) => {
   const names = parseName(name, defaultStyle)
-  console.log(names)
   const location = path.join(rootDir, 'src/svg', `${names.name}.svg`)
   const destination = path.join(rootDir, 'src/icons', `${upperCamelCase(names.name)}.js`)
   const code = fs.readFileSync(location)
-  const svgCode = await processSvg(code)
   const ComponentName = names.componentName
+  const svgCode = await processSvg(code, ComponentName)
   const element = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), svgCode)
   const component = format({
     text: element,
