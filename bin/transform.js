@@ -6,6 +6,7 @@ const { default: generate } = require("@babel/generator");
 
 function generateComponent(name, svgCode) {
   const basicSvgCode = `
+  import React from "react";
   const ${name} = (props) => {
     const { fills = [], size = 32, color, ...restProps } = props
     const getColor = (i) => fills[i] || color || "currentColor"
