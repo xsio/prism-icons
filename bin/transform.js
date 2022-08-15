@@ -6,11 +6,12 @@ const { default: generate } = require("@babel/generator");
 
 function generateComponent(name, svgCode) {
   const basicSvgCode = `
-  export const ${name} = (props) => {
+  const ${name} = (props) => {
     const { fills = [], size = 32, color, ...restProps } = props
     const getColor = (i) => fills[i] || color || "currentColor"
     return ${svgCode}
   }
+  export default ${name}
 `;
   const babelTree = babelParser(basicSvgCode, {
     sourceType: "module",
@@ -26,7 +27,7 @@ function generateComponent(name, svgCode) {
       enter(path) {
         if (path.node.name.name === "fill") {
           const color = path.node?.value?.value;
-          if (color) {
+          if (color && color !== "none") {
             if (colorMap.get(color) === undefined) {
               colorMap.set(color, index++);
             }
@@ -63,16 +64,18 @@ function generateComponent(name, svgCode) {
         ) {
           const color = path.node.value.value;
           const index = colorMap.get(color);
-          path.replaceWith(
-            t.jSXAttribute(
-              t.jsxIdentifier("fill"),
-              t.jSXExpressionContainer(
-                t.callExpression(t.identifier("getColor"), [
-                  t.numericLiteral(index),
-                ])
+          if (index != null) {
+            path.replaceWith(
+              t.jSXAttribute(
+                t.jsxIdentifier("fill"),
+                t.jSXExpressionContainer(
+                  t.callExpression(t.identifier("getColor"), [
+                    t.numericLiteral(index),
+                  ])
+                )
               )
-            )
-          );
+            );
+          }
         }
       },
     },
