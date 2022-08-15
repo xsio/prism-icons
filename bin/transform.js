@@ -9,7 +9,7 @@ function generateComponent(name, svgCode) {
   import React from "react";
   const ${name} = (props) => {
     const { fills = [], size = 32, color, ...restProps } = props
-    const getColor = (i) => fills[i] || color || "currentColor"
+    const getColor = (i, defaultColor) => fills[i] || color || defaultColor ||"currentColor"
     return ${svgCode}
   }
   export default ${name}
@@ -72,6 +72,7 @@ function generateComponent(name, svgCode) {
                 t.jSXExpressionContainer(
                   t.callExpression(t.identifier("getColor"), [
                     t.numericLiteral(index),
+                    t.stringLiteral(color),
                   ])
                 )
               )
