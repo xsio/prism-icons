@@ -16,7 +16,6 @@ function generateComponent(name, svgCode) {
     sourceType: "module",
     plugins: ["jsx"],
   });
-  // console.dir(babelTree, { depth: null });
 
   const colorMap = new Map();
 
@@ -43,7 +42,6 @@ function generateComponent(name, svgCode) {
         if (path.node.name.name === "svg") {
           const { attributes } = path.node;
           attributes.push(t.jsxSpreadAttribute(t.identifier("restProps")));
-          console.dir(attributes, {depth: null})
           const width = attributes.find((i) => i?.name?.name === "width");
           if (width) {
             width.value = t.jsxExpressionContainer(t.identifier("size"));
