@@ -31,6 +31,11 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@babel/generator": "^7.18.12",
+    "@babel/parser": "^7.18.11",
+    "@babel/template": "^7.18.10",
+    "@babel/traverse": "^7.18.11",
+    "@babel/types": "^7.18.10",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

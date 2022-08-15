@@ -9,6 +9,7 @@ const defaultStyle = process.env.npm_package_config_style || 'stroke'
 const { getAttrs, getElementCode } = require('./template')
 const icons = require('../src/data.json')
 const upperCamelCase = require("uppercamelcase")
+const { generateComponent } = require("./transform")
 
 const rootDir = path.join(__dirname, '..')
 
@@ -23,6 +24,7 @@ const initialTypeDefinitions = `/// <reference types="react" />
   interface Props extends SVGAttributes<SVGElement> {
     color?: string;
     size?: string | number;
+    fills?: string[]
   }
 
   type Icon = ComponentType<Props>;
@@ -68,7 +70,12 @@ const generateIconCode = async ({name}) => {
   const code = fs.readFileSync(location)
   const ComponentName = names.componentName
   const svgCode = await processSvg(code, ComponentName)
-  const element = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), svgCode)
+  let element = ""
+  if (ComponentName.startsWith("IconColorful")) {
+    element = generateComponent(ComponentName,  `<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">${svgCode}</svg>`)
+  } else {
+    element = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), svgCode)
+  }
   const component = format({
     text: element,
     eslintConfig: {
