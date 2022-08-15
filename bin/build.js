@@ -117,14 +117,6 @@ const appendToIconsIndex = ({ComponentName, name}) => {
     exportTypeString,
     'utf-8',
   );
-
-  fs.writeFileSync(
-    path.join(rootDir, `${ComponentName}.d.ts`),
-    `${initialTypeDefinitions}
-      declare const _default: Icon;
-      export default _default;`,
-    'utf-8',
-  )
 }
 
 generateIconsIndex()
