@@ -19,7 +19,7 @@ const iconsDir = path.join(rootDir, 'src/icons')
 
 
 const initialTypeDefinitions = `/// <reference types="react" />
-  import { ComponentType, SVGAttributes } from 'react';
+  import { FC, SVGAttributes } from 'react';
 
   interface Props extends SVGAttributes<SVGElement> {
     color?: string;
@@ -27,7 +27,7 @@ const initialTypeDefinitions = `/// <reference types="react" />
     fills?: string[]
   }
 
-  type Icon = ComponentType<Props>;
+  type Icon = FC<Props>;
   `;
 
 // generate icons.js and icons.d.ts file
