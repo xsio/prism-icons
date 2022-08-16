@@ -1,28 +1,29 @@
 # Prism Icons
 
-## 安装
+## 安装/更新
 
-``` bash
-npm i ui-icons -S 
+```bash
+yarn add @prism/ui-icons
+```
+
+更新
+
+```bash
+yarn up @prism/ui-icons
 ```
 
 ## 使用
 
-``` tsx
-import React, { Suspense } from 'react'
-import ArrowLeft from "ui-icons/ArrowLeft"
-import { ArrowRight } from "ui-icons"
+```tsx
+import { ArrowLeft, ArrowRight } from "@prism/ui-icons";
 
-const LazyIcon = React.lazy(() => import("ui-icons/ArrowUp"))
 function App() {
   return (
     <div className="App">
-      <ArrowLeft/>
-      <ArrowRight />
-      <Suspense fallback={"fallback"}>
-        <LazyIcon />
-      </Suspense>
+      <ArrowLeft color="cyan" />
+      {/* 多色 */}
+      <ArrowRight fills={["orange", "cyan"]} />
     </div>
-  )
+  );
 }
 ```
