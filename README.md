@@ -1,23 +1,38 @@
 # Prism Icons
 
-## 安装
+## 安装与更新
 
-``` bash
-npm i @prism/ui-icons -S 
+```bash
+# install
+yarn add @prism/ui-icons
+
+# upgrade
+yarn up @prism/ui-icons
+```
+
+## Component Interface
+
+```ts
+interface Props extends SVGAttributes<SVGElement> {
+  color?: string;
+  size?: string | number;
+  fills?: string[];
+}
+
+export type Icon = FC<Props>;
 ```
 
 ## 使用
 
-``` tsx
-import ArrowLeft from "@prism/ui-icons/ArrowLeft"
-import { ArrowRight } from "@prism/ui-icons"
+```tsx
+import { ArrowRight, ArrowLeft } from "@prism/ui-icons";
 
 function App() {
   return (
     <div className="App">
-      <ArrowLeft/>
-      <ArrowRight />
+      <ArrowLeft fills={["red", "orange"]} />
+      <ArrowRight color="cyan" />
     </div>
-  )
+  );
 }
 ```
