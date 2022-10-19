@@ -1,6 +1,6 @@
 {
   "name": "@prism/ui-icons",
-  "version": "1.71.73",
+  "version": "1.72.5",
   "description": "Icon automation workflow with Figma for Prism",
   "main": "./icons.js",
   "typings": "./icons.d.ts",
