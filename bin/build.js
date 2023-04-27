@@ -67,6 +67,7 @@ const generateIconCode = async ({name}) => {
   const names = parseName(name, defaultStyle)
   const location = path.join(rootDir, 'src/svg', `${names.name}.svg`)
   const destination = path.join(rootDir, 'src/icons', `${upperCamelCase(names.name)}.js`)
+  console.log("******", location)
   const code = fs.readFileSync(location)
   const ComponentName = names.componentName
   const svgCode = await processSvg(code, ComponentName)
