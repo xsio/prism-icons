@@ -125,8 +125,7 @@ generateIconsIndex()
 Object
   .keys(icons)
   .map(key => icons[key])
-  .forEach(({filename}) => {
-    const name = filename.replace('.svg', '');
+  .forEach(({name}) => {
     generateIconCode({name})
       .then(({ComponentName, name}) => {
         appendToIconsIndex({ComponentName, name})
