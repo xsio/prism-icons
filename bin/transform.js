@@ -1,24 +1,13 @@
-
 const { default: traverse } = require("@babel/traverse");
 const { parse: babelParser } = require("@babel/parser");
+const { parse: svgParser } = require("svg-parser");
+const hastToBabelAst = require("@svgr/hast-util-to-babel-ast");
 const t = require("@babel/types");
 const { default: generate } = require("@babel/generator");
 
 function generateComponent(name, svgCode) {
-  const basicSvgCode = `
-  import React from "react";
-  const ${name} = (props) => {
-    const { fills = [], size = 32, color, ...restProps } = props
-    const getColor = (i, defaultColor) => fills[i] || color || defaultColor ||"currentColor"
-    return ${svgCode}
-  }
-  export default ${name}
-`;
-  const babelTree = babelParser(basicSvgCode, {
-    sourceType: "module",
-    plugins: ["jsx"],
-  });
-
+  const hastTree = svgParser(svgCode);
+  const babelTree = hastToBabelAst(hastTree);
   const colorMap = new Map();
 
   // collect all color to map
@@ -84,7 +73,16 @@ function generateComponent(name, svgCode) {
   });
 
   const { code } = generate(babelTree);
-  return code;
+
+  return `
+  import React from "react";
+  const ${name} = (props) => {
+    const { fills = [], size = 32, color, ...restProps } = props
+    const getColor = (i, defaultColor) => fills[i] || color || defaultColor ||"currentColor"
+    return ${code}
+  }
+  export default ${name}
+`;
 }
 
-module.exports.generateComponent = generateComponent
+module.exports.generateComponent = generateComponent;
