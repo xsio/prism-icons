@@ -38,11 +38,11 @@ jobs:
     - run: npm publish -timeout=9999999
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-    - run: yarn build
+    - run: yarn build:docs
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.2.5
       with:
-        build_dir: docs
-        keep_history: true
+        build_dir: docs/dist
+        keep_history: false
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

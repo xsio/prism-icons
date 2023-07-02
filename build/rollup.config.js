@@ -19,18 +19,18 @@ const babelOptions = {
 
 module.exports = [
   {
-    input: resolveFile('src/main.js'),
+    input: resolveFile('src/icons.js'),
     output: {
       dir: "docs",
       format: 'amd', // iife & umd dont support code splitting
     },
     plugins: [
-      copy({
-        targets: [
-          { src: resolveFile('public/**/*'), dest: resolveFile('docs') }
-        ]
-      }),
-      postcss(),
+      // copy({
+      //   targets: [
+      //     { src: resolveFile('public/**/*'), dest: resolveFile('docs') }
+      //   ]
+      // }),
+      // postcss(),
       nodeResolve(),
       commonjs({
         exclude: 'src/**'

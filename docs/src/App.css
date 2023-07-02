@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.icon-item {
+  min-width: 120px;
+  text-align: center;
+  padding: 20px 10px;
+}
