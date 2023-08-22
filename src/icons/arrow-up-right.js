@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const ArrowUpRight = props => {
   const { color, size, ...otherProps } = props;
@@ -19,11 +18,6 @@ const ArrowUpRight = props => {
       ></path>
     </svg>
   );
-};
-
-ArrowUpRight.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 ArrowUpRight.defaultProps = {

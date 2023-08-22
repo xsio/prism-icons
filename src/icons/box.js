@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Box = props => {
   const { color, size, ...otherProps } = props;
@@ -29,11 +28,6 @@ const Box = props => {
       ></path>
     </svg>
   );
-};
-
-Box.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Box.defaultProps = {

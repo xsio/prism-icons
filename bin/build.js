@@ -19,16 +19,16 @@ const iconsDir = path.join(rootDir, 'src/icons')
 
 
 const initialTypeDefinitions = `/// <reference types="react" />
-  import { FC, SVGAttributes } from 'react';
+import { FC, SVGAttributes } from 'react';
 
-  interface Props extends SVGAttributes<SVGElement> {
-    color?: string;
-    size?: string | number;
-    fills?: string[]
-  }
+interface Props extends SVGAttributes<SVGElement> {
+  color?: string;
+  size?: string | number;
+  fills?: string[]
+}
 
-  type Icon = FC<Props>;
-  `;
+type Icon = FC<Props>;
+`;
 
 // generate icons.js and icons.d.ts file
 const generateIconsIndex = () => {
@@ -39,7 +39,7 @@ const generateIconsIndex = () => {
     fs.mkdirSync(iconsDir)
   }
 
-  fs.writeFileSync(path.join(rootDir, 'src', 'icons.js'), 'import React, { Suspense } from "react";\r\n', 'utf-8');
+  fs.writeFileSync(path.join(rootDir, 'src', 'icons.js'), '', 'utf-8');
   fs.writeFileSync(
     path.join(rootDir, 'src', 'icons.d.ts'),
     initialTypeDefinitions,
@@ -49,6 +49,7 @@ const generateIconsIndex = () => {
 
 // generate attributes code
 const attrsToString = (attrs, style) => {
+  console.log('style: ', style)
   return Object.keys(attrs).map((key) => {
     // should distinguish fill or stroke
     if (key === 'width' || key === 'height' || key === style) {
@@ -96,15 +97,7 @@ const generateIconCode = async ({name}) => {
 
 // append export code to icons.js
 const appendToIconsIndex = ({ComponentName, name}) => {
-  // const exportString = `export const ${ComponentName} = React.lazy(() => import( /* webpackChunkName: "prism.icons.${ComponentName}" */ './icons/${upperCamelCase(name)}'));\r\n`;
-  const exportString = `export const ${ComponentName} = React.memo((props) => {
-    const { fallback = null, ...otherProps } = props
-    let C = React.lazy(() => import( /* webpackChunkName: "prism.icons.${ComponentName}" */ './icons/${upperCamelCase(name)}'));
-    return (<Suspense fallback={fallback}>
-      <C {...otherProps}/>
-    </Suspense>)
-  });
-  `;
+  const exportString = `export { default as ${ComponentName} } from './icons/${upperCamelCase(name)}';\n`;
   fs.appendFileSync(
     path.join(rootDir, 'src', 'icons.js'),
     exportString,

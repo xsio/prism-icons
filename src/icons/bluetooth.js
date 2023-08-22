@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Bluetooth = props => {
   const { color, size, ...otherProps } = props;
@@ -26,11 +25,6 @@ const Bluetooth = props => {
       </defs>
     </svg>
   );
-};
-
-Bluetooth.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Bluetooth.defaultProps = {

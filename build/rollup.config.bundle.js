@@ -34,5 +34,5 @@ export default {
       // babelHelpers: "runtime",
     })
   ],
-  external: ['react', 'prop-types'],
+  external: ['react'],
 };

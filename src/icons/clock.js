@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Clock = props => {
   const { color, size, ...otherProps } = props;
@@ -24,11 +23,6 @@ const Clock = props => {
       ></path>
     </svg>
   );
-};
-
-Clock.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Clock.defaultProps = {

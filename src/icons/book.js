@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Book = props => {
   const { color, size, ...otherProps } = props;
@@ -24,11 +23,6 @@ const Book = props => {
       ></path>
     </svg>
   );
-};
-
-Book.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Book.defaultProps = {

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Chrome = props => {
   const { color, size, ...otherProps } = props;
@@ -39,11 +38,6 @@ const Chrome = props => {
       ></path>
     </svg>
   );
-};
-
-Chrome.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Chrome.defaultProps = {

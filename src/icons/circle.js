@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Circle = props => {
   const { color, size, ...otherProps } = props;
@@ -19,11 +18,6 @@ const Circle = props => {
       ></path>
     </svg>
   );
-};
-
-Circle.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Circle.defaultProps = {

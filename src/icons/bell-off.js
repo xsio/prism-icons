@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const BellOff = props => {
   const { color, size, ...otherProps } = props;
@@ -21,11 +20,6 @@ const BellOff = props => {
       <path d="M9.768 20.135a1 1 0 011.367.363 1 1 0 001.73 0 1 1 0 011.73 1.004 3 3 0 01-5.19 0 1 1 0 01.363-1.367z"></path>
     </svg>
   );
-};
-
-BellOff.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 BellOff.defaultProps = {
