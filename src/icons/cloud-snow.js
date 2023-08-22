@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const CloudSnow = props => {
   const { color, size, ...otherProps } = props;
@@ -28,11 +27,6 @@ const CloudSnow = props => {
       </defs>
     </svg>
   );
-};
-
-CloudSnow.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 CloudSnow.defaultProps = {

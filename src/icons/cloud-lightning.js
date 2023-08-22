@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const CloudLightning = props => {
   const { color, size, ...otherProps } = props;
@@ -23,11 +22,6 @@ const CloudLightning = props => {
       </defs>
     </svg>
   );
-};
-
-CloudLightning.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 CloudLightning.defaultProps = {

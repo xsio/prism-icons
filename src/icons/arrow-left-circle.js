@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const ArrowLeftCircle = props => {
   const { color, size, ...otherProps } = props;
@@ -20,11 +19,6 @@ const ArrowLeftCircle = props => {
       <path d="M12.707 8.707a1 1 0 00-1.414-1.414l-4 4a1 1 0 000 1.414l4 4a1 1 0 001.414-1.414L10.414 13H16a1 1 0 100-2h-5.586l2.293-2.293z"></path>
     </svg>
   );
-};
-
-ArrowLeftCircle.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 ArrowLeftCircle.defaultProps = {

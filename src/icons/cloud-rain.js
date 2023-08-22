@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const CloudRain = props => {
   const { color, size, ...otherProps } = props;
@@ -25,11 +24,6 @@ const CloudRain = props => {
       </defs>
     </svg>
   );
-};
-
-CloudRain.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 CloudRain.defaultProps = {

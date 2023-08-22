@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Award = props => {
   const { color, size, ...otherProps } = props;
@@ -23,11 +22,6 @@ const Award = props => {
       </defs>
     </svg>
   );
-};
-
-Award.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Award.defaultProps = {

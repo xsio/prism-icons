@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const ChevronLeft = props => {
   const { color, size, ...otherProps } = props;
@@ -19,11 +18,6 @@ const ChevronLeft = props => {
       ></path>
     </svg>
   );
-};
-
-ChevronLeft.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 ChevronLeft.defaultProps = {

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Calendar = props => {
   const { color, size, ...otherProps } = props;
@@ -34,11 +33,6 @@ const Calendar = props => {
       ></path>
     </svg>
   );
-};
-
-Calendar.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Calendar.defaultProps = {
